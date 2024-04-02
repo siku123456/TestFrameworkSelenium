@@ -5,7 +5,8 @@
     <classes>
       <class name="SeleniumFrameworkDesign.ErrorValidations">
         <methods>
-          <include name="submitOrder"/>
+          <include name="TearDown"/>
+          <include name="loginErrorValidation"/>
           <include name="launchApplication"/>
         </methods>
       </class> <!-- SeleniumFrameworkDesign.ErrorValidations -->

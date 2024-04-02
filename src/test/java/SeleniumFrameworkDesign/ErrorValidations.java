@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.sun.net.httpserver.Authenticator.Retry;
+
 import SeleniumFrameworkDesign.PageObjects.CartPage;
 import SeleniumFrameworkDesign.PageObjects.CheckOutPage;
 import SeleniumFrameworkDesign.PageObjects.ConfirmationPage;
@@ -25,7 +27,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ErrorValidations extends BaseTest{
 
-	@Test(groups= {"ErrorHandling"})
+	@Test(groups= {"ErrorHandling"},retryAnalyzer=Retry.class)
 	public void loginErrorValidation() throws IOException, InterruptedException {
 		
 		//String productname="ZARA COAT 3";
@@ -33,7 +35,7 @@ public class ErrorValidations extends BaseTest{
 		//ExtentSparkReporter reporter=new ExtentSparkReporter(path);
 		//reporter.config().setReportName("Web Automation Result");
 		ProductCatalogue productCatalogue=landingpage.loginApplication("AarviDehuri1@gmail.com", "Aarvi@6481");
-		Assert.assertEquals("Incorrect email or password.", landingpage.getErrorMessage());
+		Assert.assertEquals("Incorrect email  password.", landingpage.getErrorMessage());
 		
 }
 	

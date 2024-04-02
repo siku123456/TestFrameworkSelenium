@@ -4,11 +4,11 @@ import com.aventstack.extentreports.ExtentReports;
 //import SeleniumFrameworkDesign.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-public class ExtentReporteNG {
+public class ExtentReporterNG {
 	
 	public static ExtentReports getReportObject() {
 		
-		String path=System.getProperty("user.dir")+"reports//index.html";
+		String path=System.getProperty("user.dir")+"//reports//index.html";
 		ExtentSparkReporter reporter=new ExtentSparkReporter(path);
 		reporter.config().setReportName("Web Automation Result");
 		reporter.config().setDocumentTitle("Test Result");

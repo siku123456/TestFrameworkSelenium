@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" parallel="tests" name="StandAloneTest2(failed)">
-    <groups>
-      <run>
-        <include name="Purchase"/>
-      </run>
-    </groups>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="SeleniumFrameworkDesign.TestComponents.tttttttt"/>
+  </listeners>
+  <test parallel="tests" name="Error Validatios Tests(failed)">
     <classes>
+      <class name="SeleniumFrameworkDesign.ErrorValidations">
+        <methods>
+          <include name="TearDown"/>
+          <include name="loginErrorValidation"/>
+          <include name="launchApplication"/>
+        </methods>
+      </class> <!-- SeleniumFrameworkDesign.ErrorValidations -->
       <class name="SeleniumFrameworkDesign.StandAloneTest2">
         <methods>
           <include name="TearDown"/>
           <include name="launchApplication"/>
-          <include name="submitOrder" invocation-numbers="0 1"/>
         </methods>
       </class> <!-- SeleniumFrameworkDesign.StandAloneTest2 -->
     </classes>
-  </test> <!-- StandAloneTest2(failed) -->
+  </test> <!-- Error Validatios Tests(failed) -->
 </suite> <!-- Failed suite [Suite] -->

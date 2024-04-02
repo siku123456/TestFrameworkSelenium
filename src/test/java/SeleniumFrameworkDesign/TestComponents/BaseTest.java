@@ -14,6 +14,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -32,8 +33,9 @@ public class BaseTest {
 		//Properties class
 		Properties prop=new Properties();
 		FileInputStream fs=new FileInputStream(System.getProperty("user.dir")+"/src/main/java/SeleniumFrameworkDesign/resources/GlobalData.properties");
-		prop.load(fs);;
-		String browsername=prop.getProperty("browser");
+		prop.load(fs);
+		String browsername=System.getProperty("browser")!=null ? 	System.getProperty("browser") : prop.getProperty("browser");
+		//String browsername=prop.getProperty("browser");
 		if(browsername.equalsIgnoreCase("chrome")) {
 			
 			WebDriverManager.chromedriver().setup();
@@ -42,7 +44,8 @@ public class BaseTest {
 		}
 		
 		else if(browsername.equalsIgnoreCase("firefox")){
-			
+			WebDriverManager.firefoxdriver().setup();
+			driver=new FirefoxDriver();
 			//firefox
 		}
 		
@@ -75,7 +78,7 @@ public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IO
 		
 	}
 
-public String getScreenshot(String testCaseName) throws IOException {
+public String getScreenshot(String testCaseName,WebDriver driver) throws IOException {
 	
 	TakesScreenshot ts=(TakesScreenshot)driver;
 	File source=ts.getScreenshotAs(OutputType.FILE);
